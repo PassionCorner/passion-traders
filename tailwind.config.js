@@ -18,6 +18,10 @@ module.exports = {
         lightTeal: {
           DEFAULT: "#4C5D72"
         }
+      },
+      screens: {
+        mobile: "576px"
+        // => @media (min-width: 640px) { ... }
       }
     }
   },
