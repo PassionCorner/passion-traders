@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col items-center justify-center h-full">
     <p
-      class="font-nuno font-light text-white text-2xl text-lightTeal tracking-wide"
+      class="font-nuno font-light text-white text-3xl text-lightTeal tracking-wide"
     >
       Plan your trades and tracks your progress
     </p>

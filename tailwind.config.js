@@ -27,7 +27,7 @@ module.exports = {
   },
   variants: {
     extend: {
-      // backgroundColor: ["active"]
+      backgroundColor: ["checked"]
     }
   },
   plugins: []
