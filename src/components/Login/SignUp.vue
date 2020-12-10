@@ -1,33 +1,39 @@
 <template>
-  <form class="transition duration-150 ease-in flex flex-col md:mb-8">
-    <label class="font-nuno font-light text-lg text-white uppercase mb-7"
+  <form
+    @submit.prevent="handleSubmit"
+    class="transition duration-150 ease-in flex flex-col md:mb-8"
+  >
+    <label class="font-nuno font-light text-md text-white uppercase mb-7"
       >full name</label
     >
     <input
       class="font-nuno font-light text-md text-white bg-transparent border-b border-lightTeal focus:outline-none"
       type="text"
       placeholder="Enter your full name"
+      v-model="displayName"
     />
-    <label class="font-nuno font-light text-lg text-white uppercase my-7"
+    <label class="font-nuno font-light text-md text-white uppercase my-7"
       >e-mail</label
     >
     <input
       class="font-nuno font-light text-md text-white bg-transparent border-b border-lightTeal focus:outline-none"
       type="email"
       placeholder="Enter your email"
+      v-model="email"
     />
-    <label class="font-nuno font-light text-lg text-white uppercase my-7"
+    <label class="font-nuno font-light text-md text-white uppercase my-7"
       >password</label
     >
     <input
       class="font-nuno font-light text-md text-white bg-transparent border-b border-lightTeal focus:outline-none"
       type="password"
       placeholder="Create your password"
+      v-model="password"
     />
     <div>
       <label class="checkbox my-7 flex">
         <span class="checkbox__input">
-          <input type="checkbox" name="checkbox" />
+          <input type="checkbox" name="checkbox" required />
           <span class="checkbox__control">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -63,7 +69,24 @@
 </template>
 
 <script>
-export default {}
+import { ref } from "vue"
+import useSignup from "@/composables/useSignup"
+export default {
+  setup() {
+    const displayName = ref("")
+    const email = ref("")
+    const password = ref("")
+    const { signup, isPending, error } = useSignup()
+    const handleSubmit = async () => {
+      await signup(email.value, password.value, displayName.value)
+      if (!error.value) {
+        console.log("User signed up")
+      }
+    }
+
+    return { displayName, email, password, isPending, error, handleSubmit }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
