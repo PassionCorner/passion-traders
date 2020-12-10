@@ -1,6 +1,6 @@
 <template>
   <div class="login flex justify-evenly relative">
-    <LoginNav class="container absolute py-5 px-5 w-full" />
+    <LoginNav class="absolute py-5 px-5 w-full" />
     <div class="login-left bg-teal w-screen h-screen md:block hidden">
       <!-- <p>Left</p> -->
       <LoginLeft />
